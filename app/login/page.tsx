@@ -21,19 +21,32 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    const supabase = createClient()
     setIsLoading(true)
     setError(null)
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const supabase = createClient()
+      const { error, data } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
+
       if (error) throw error
-      router.push("/dashboard")
+
+      await new Promise((resolve) => setTimeout(resolve, 100))
+
+      window.location.href = "/dashboard"
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "Ocorreu um erro")
+      console.error("[v0] Login error:", error)
+      if (error instanceof Error) {
+        if (error.message.includes("Invalid login credentials")) {
+          setError("Email ou senha incorretos")
+        } else {
+          setError(error.message)
+        }
+      } else {
+        setError("Ocorreu um erro ao fazer login")
+      }
     } finally {
       setIsLoading(false)
     }

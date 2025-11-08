@@ -29,7 +29,7 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-screen bg-background">
       <DashboardHeader />
-      <main className="container py-8 px-10 px-10 px-11 px-10 px-11 px-12 px-14 px-16 px-20 px-28 px-32 px-8 px-7 px-8 px-7 px-6 px-5 px-4 px-3.5 px-3 px-3.5 px-0 px-0 px-3 px-3 px-1.5 px-0 px-0">
+      <main className="container py-8 px-4">
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold">Minhas Campanhas</h1>
