@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Sparkles } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
@@ -60,15 +61,14 @@ export default function CadastroPage() {
   }
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-b from-background to-muted/20 p-6">
+    <div className="flex min-h-screen w-full items-center justify-center bg-gradient-to-br from-background via-background to-muted/20 p-6">
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <Sparkles className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold">AdsCopilot</span>
+          <Link href="/" className="inline-flex items-center justify-center">
+            <Image src="/pmaxai-logo.png" alt="pmaxAI" width={160} height={60} className="h-16 w-auto" />
           </Link>
         </div>
-        <Card>
+        <Card className="border-2 rounded-3xl shadow-lg">
           <CardHeader>
             <CardTitle className="text-2xl">Criar conta</CardTitle>
             <CardDescription>Preencha os dados abaixo para criar sua conta</CardDescription>
@@ -85,6 +85,7 @@ export default function CadastroPage() {
                     required
                     value={nome}
                     onChange={(e) => setNome(e.target.value)}
+                    className="rounded-xl"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -96,6 +97,7 @@ export default function CadastroPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className="rounded-xl"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -106,6 +108,7 @@ export default function CadastroPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    className="rounded-xl"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -116,16 +119,17 @@ export default function CadastroPage() {
                     required
                     value={repeatPassword}
                     onChange={(e) => setRepeatPassword(e.target.value)}
+                    className="rounded-xl"
                   />
                 </div>
                 {error && <p className="text-sm text-destructive">{error}</p>}
-                <Button type="submit" className="w-full" disabled={isLoading}>
+                <Button type="submit" className="w-full rounded-3xl bg-[#427cdb] hover:bg-[#dc4a3d]" disabled={isLoading}>
                   {isLoading ? "Criando conta..." : "Criar conta"}
                 </Button>
               </div>
               <div className="mt-4 text-center text-sm">
                 Já tem uma conta?{" "}
-                <Link href="/login" className="underline underline-offset-4 text-primary">
+                <Link href="/login" className="underline underline-offset-4 text-[#427cdb] hover:text-[#dc4a3d]">
                   Entrar
                 </Link>
               </div>
